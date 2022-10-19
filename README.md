@@ -1,3 +1,3 @@
-# reac-typesctipr-for-fools
+# react-typesctipt-for-fools
 
 Simple react practice project.
