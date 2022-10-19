@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IProduct } from '../models';
 import axios, { AxiosError } from 'axios';
 
@@ -6,6 +6,7 @@ interface UseProductsReturn {
   products: IProduct[];
   loading: boolean;
   error: string;
+  addProduct: (product: IProduct) => void;
 }
 
 export const useProducts = (): UseProductsReturn => {
@@ -31,9 +32,13 @@ export const useProducts = (): UseProductsReturn => {
     }
   };
 
+  const addProduct = (product: IProduct) => {
+    setProducts((prev) => [...prev, product]);
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  return { products, loading, error };
+  return { products, loading, error, addProduct };
 };
